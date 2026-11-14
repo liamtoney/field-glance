@@ -60,8 +60,10 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
         declination = d
         location = fix.coordinate
         // Share with widget
+        #if os(watchOS)
         UserDefaults(suiteName: sharedGroupID)?.set(d, forKey: declKey)
         WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")
+        #endif
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
