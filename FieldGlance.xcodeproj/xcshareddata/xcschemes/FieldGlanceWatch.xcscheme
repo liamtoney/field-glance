@@ -30,6 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0C236A0530A82E2400BCCCB4"
                BuildableName = "FieldGlance.app"
+               BlueprintName = "FieldGlance"
                ReferencedContainer = "container:FieldGlance.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
