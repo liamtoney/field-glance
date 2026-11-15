@@ -7,7 +7,7 @@ import SwiftUI
 
 // Layout tuning:
 //   50   clock date/time and declination value font
-//   25   zone label, WMM label, coords font
+//   20   zone label, WMM label, coords font
 //    2   spacing between lines within a panel
 //   50   spacing between panels
 //   36   horizontal padding
@@ -28,7 +28,7 @@ private struct ClockPanel: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             Text(label)
-                .font(.system(size: 25))
+                .font(.system(size: 20))
                 .opacity(0.7)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -92,7 +92,7 @@ struct ContentView: View {
                     .minimumScaleFactor(0.5)
             }
             Text(WMM.isValid(on: Date()) ? "DECLINATION · WMM2025" : "WMM2025 OUT OF DATE")
-                .font(.system(size: 25))
+                .font(.system(size: 20))
                 .opacity(0.7)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -100,7 +100,7 @@ struct ContentView: View {
                 let lat = String(format: "%@%.4f°", loc.latitude  < 0 ? "−" : "", abs(loc.latitude))
                 let lon = String(format: "%@%.4f°", loc.longitude < 0 ? "−" : "", abs(loc.longitude))
                 Text("(\(lat), \(lon))")
-                    .font(.system(size: 25))
+                    .font(.system(size: 20))
                     .opacity(0.7)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
