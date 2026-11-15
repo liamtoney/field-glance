@@ -99,5 +99,6 @@ struct DeclinationPanel: View {
         .font(Font.system(size: 36, weight: .semibold))
         .foregroundStyle(.green)
         .onAppear { model.start() }
+        .onTapGesture { model.start() }
     }
 }
