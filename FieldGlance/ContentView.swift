@@ -12,7 +12,7 @@ private struct ClockPanel: View {
     let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 3) {
             Text(zone.dateFormatter.string(from: date))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -20,8 +20,8 @@ private struct ClockPanel: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             Text(label)
-                .font(.footnote)
-                .opacity(0.75)
+                .font(.body)
+                .opacity(0.7)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
         }
@@ -40,7 +40,7 @@ struct ContentView: View {
             Color.black.ignoresSafeArea()
 
             TimelineView(.periodic(from: .now, by: 1)) { context in
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 40) {
                     ClockPanel(
                         date: context.date,
                         zone: localZone,
@@ -69,32 +69,36 @@ struct ContentView: View {
 
     // Extracted so the @StateObject model isn't inside the TimelineView closure
     private var declinationPanel: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 3) {
             if let d = model.declination {
-                Text(String(format: "%.1f° %@", abs(d), d >= 0 ? "E" : "W"))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text(String(format: "%.1f° %@", abs(d), d >= 0 ? "E" : "W"))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                    Image(systemName: "arrow.up")
+                        .rotationEffect(.degrees(d))
+                }
             } else {
                 Text(model.status)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
             }
             Text(WMM.isValid(on: Date()) ? "DECLINATION · WMM2025" : "WMM2025 OUT OF DATE")
-                .font(.footnote)
-                .opacity(0.75)
+                .font(.body)
+                .opacity(0.7)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             if let loc = model.location {
                 let lat = String(format: "%@%.4f°", loc.latitude  < 0 ? "−" : "", abs(loc.latitude))
                 let lon = String(format: "%@%.4f°", loc.longitude < 0 ? "−" : "", abs(loc.longitude))
                 Text("(\(lat), \(lon))")
-                    .font(.footnote)
-                    .opacity(0.75)
+                    .font(.body)
+                    .opacity(0.7)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
             }
         }
-        .font(.system(.largeTitle, design: .monospaced, weight: .semibold))
+        .font(.system(.largeTitle, weight: .semibold))
         .foregroundStyle(.green)
         .accessibilityElement(children: .combine)
         .onAppear { model.start() }
