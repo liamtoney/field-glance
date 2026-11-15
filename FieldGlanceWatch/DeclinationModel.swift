@@ -1,3 +1,4 @@
+//
 //  DeclinationModel.swift
 //  FieldGlanceWatch
 //
