@@ -5,6 +5,14 @@
 
 import SwiftUI
 
+// Layout tuning:
+//   50   clock date/time and declination value font
+//   25   zone label, WMM label, coords font
+//    2   spacing between lines within a panel
+//   50   spacing between panels
+//   36   horizontal padding
+//   48   vertical padding
+
 private struct ClockPanel: View {
     let date: Date
     let zone: Zone
@@ -12,7 +20,7 @@ private struct ClockPanel: View {
     let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 3) {
+        VStack(alignment: .leading, spacing: 2) {
             Text(zone.dateFormatter.string(from: date))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -20,12 +28,12 @@ private struct ClockPanel: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             Text(label)
-                .font(.body)
+                .font(.system(size: 25))
                 .opacity(0.7)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
         }
-        .font(.system(.largeTitle, design: .monospaced, weight: .semibold))
+        .font(.system(size: 50, weight: .semibold, design: .monospaced))
         .foregroundStyle(color)
         .accessibilityElement(children: .combine)
     }
@@ -40,7 +48,7 @@ struct ContentView: View {
             Color.black.ignoresSafeArea()
 
             TimelineView(.periodic(from: .now, by: 1)) { context in
-                VStack(alignment: .leading, spacing: 40) {
+                VStack(alignment: .leading, spacing: 50) {
                     ClockPanel(
                         date: context.date,
                         zone: localZone,
@@ -56,8 +64,8 @@ struct ContentView: View {
                     // Declination panel sits outside TimelineView to avoid recreation every second
                     declinationPanel
                 }
-                .padding(.horizontal, 24)
-                .padding(.vertical, 32)
+                .padding(.horizontal, 36)
+                .padding(.vertical, 48)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
         }
@@ -69,7 +77,7 @@ struct ContentView: View {
 
     // Extracted so the @StateObject model isn't inside the TimelineView closure
     private var declinationPanel: some View {
-        VStack(alignment: .leading, spacing: 3) {
+        VStack(alignment: .leading, spacing: 2) {
             if let d = model.declination {
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text(String(format: "%.1f° %@", abs(d), d >= 0 ? "E" : "W"))
@@ -84,7 +92,7 @@ struct ContentView: View {
                     .minimumScaleFactor(0.5)
             }
             Text(WMM.isValid(on: Date()) ? "DECLINATION · WMM2025" : "WMM2025 OUT OF DATE")
-                .font(.body)
+                .font(.system(size: 25))
                 .opacity(0.7)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -92,13 +100,13 @@ struct ContentView: View {
                 let lat = String(format: "%@%.4f°", loc.latitude  < 0 ? "−" : "", abs(loc.latitude))
                 let lon = String(format: "%@%.4f°", loc.longitude < 0 ? "−" : "", abs(loc.longitude))
                 Text("(\(lat), \(lon))")
-                    .font(.body)
+                    .font(.system(size: 25))
                     .opacity(0.7)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
             }
         }
-        .font(.system(.largeTitle, weight: .semibold))
+        .font(.system(size: 50, weight: .semibold))
         .foregroundStyle(.green)
         .accessibilityElement(children: .combine)
         .onAppear { model.start() }
