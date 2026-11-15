@@ -1,6 +1,6 @@
 # Field Glance
 
-A minimal field tool for iPhone and Apple Watch. Three panels on a black screen:
+A minimal field info display for iPhone and Apple Watch. Three panels on a black screen:
 
 - **Local time** — date and time in your current timezone
 - **UTC** — date and time in UTC
