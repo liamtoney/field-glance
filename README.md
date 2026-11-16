@@ -1,31 +1,46 @@
-# Field Glance
+<p align="center">
+  <img src="icon/FieldGlance.png" width="128" alt="Field Glance app icon">
+</p>
 
-A minimal field info display for iPhone and Apple Watch. Three panels on a black screen:
+<h1 align="center">Field Glance</h1>
 
-- **Local time** — date and time in your current timezone
+<p align="center">
+  Local time, UTC time, and magnetic declination, at a glance.<br>
+  For iPhone and Apple Watch.
+</p>
+
+---
+
+Three pieces of information on a black screen...
+
+- **Local time** — date and time in your current time zone
 - **UTC** — date and time in UTC
-- **Magnetic declination** — current value with a compass arrow, computed from your
-  location using WMM2025
+- **Magnetic declination** — the current value at your location indicated with a compass
+  arrow
 
-No accounts, no settings, no network requests. Location is used on-device only.
+...and nothing else. No accounts, no settings, no network requests.
 
 ## Targets
 
-| Target | Description |
-|---|---|
-| FieldGlance | iPhone app |
-| FieldGlanceWatch | watchOS app |
-| FieldGlanceWidget | Watch complications (UTC, declination) |
+| Target              | Description                            |
+| ------------------- | -------------------------------------- |
+| `FieldGlance`       | iPhone app                             |
+| `FieldGlanceWatch`  | Apple Watch app                        |
+| `FieldGlanceWidget` | Watch complications (UTC, declination) |
 
 ## Requirements
 
-- Xcode 27+
-- iOS 17+ / watchOS 10+
+- Xcode 27 or later
+- iOS and watchOS versions: see **Minimum Deployments** in each target's General tab
 
 ## Notes
 
-Declination is computed using the
+Declination is computed with the
 [World Magnetic Model 2025](https://www.ncei.noaa.gov/products/world-magnetic-model)
-(WMM2025), valid through 2029. The app warns when the model is out of date.
+(WMM2025), which is valid through 2029. The app shows a warning when the model is out of
+date.
 
-> 🤖 Generated using Claude and Kiro with a human in the loop.
+The app icon is built from `icon/field-glance.svg`. See
+[`icon/README.md`](icon/README.md) for how it is exported and composed.
+
+> 🤖 Built using Claude and Kiro, with a human in the loop.
