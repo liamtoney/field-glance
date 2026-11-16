@@ -6,12 +6,13 @@
 import SwiftUI
 
 // Layout tuning:
-//   50   clock date/time and declination value font
-//   20   zone label, WMM label, coords font
-//    4   spacing between lines within a panel
-//   50   spacing between panels
-//   36   horizontal padding
-//   48   vertical padding
+//   50    clock date/time and declination value font
+//   18    zone label, WMM label, coords font
+//    4    spacing between lines within a panel
+//   50    spacing between panels
+//   36    horizontal padding
+//   48    vertical padding
+//    0.6  opacity for secondary text
 
 private struct ClockPanel: View {
     let date: Date
@@ -24,13 +25,13 @@ private struct ClockPanel: View {
             Text(zone.dateFormatter.string(from: date))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-                .padding(.bottom, -6)
+                .padding(.bottom, -10)
             Text(zone.timeFormatter.string(from: date))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             Text(label)
-                .font(.system(size: 20))
-                .opacity(0.7)
+                .font(.system(size: 18))
+                .opacity(0.6)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
         }
@@ -92,17 +93,17 @@ struct ContentView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
             }
-            Text(WMM.isValid(on: Date()) ? "DECLINATION · WMM2025" : "WMM2025 OUT OF DATE")
-                .font(.system(size: 20))
-                .opacity(0.7)
+            Text(WMM.isValid(on: Date()) ? "DECLINATION • WMM2025" : "WMM2025 OUT OF DATE")
+                .font(.system(size: 18))
+                .opacity(0.6)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             if let loc = model.location {
                 let lat = String(format: "%@%.4f°", loc.latitude  < 0 ? "−" : "", abs(loc.latitude))
                 let lon = String(format: "%@%.4f°", loc.longitude < 0 ? "−" : "", abs(loc.longitude))
                 Text("(\(lat), \(lon))")
-                    .font(.system(size: 20))
-                    .opacity(0.7)
+                    .font(.system(size: 18))
+                    .opacity(0.6)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
             }
