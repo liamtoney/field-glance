@@ -30,7 +30,7 @@
           ],
           "image-name" : "field-glance.svg",
           "name" : "field-glance",
-          "opacity" : 0.8
+          "opacity" : 1
         }
       ],
       "opacity" : 1,
@@ -46,7 +46,7 @@
       "specular" : true,
       "translucency" : {
         "enabled" : true,
-        "value" : 0.4
+        "value" : 0.3
       }
     }
   ],

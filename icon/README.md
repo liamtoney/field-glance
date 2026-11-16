@@ -49,5 +49,4 @@ These live only in the `.icon` file, so note them here if they change.
 
 - **Background fill:** `#000000` (use the same fill for Default and Dark)
 - **Groups:** The full SVG is imported as a single group
-- **Effects:** Disable shadow and bump translucency to 40% on the _group_; reduce
-  opacity to 80% on the _image_
+- **Effects:** Disable shadow on the _group_
