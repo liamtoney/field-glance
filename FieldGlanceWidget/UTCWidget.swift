@@ -55,6 +55,7 @@ struct UTCView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(dateFormatter.string(from: entry.date))
+                .padding(.bottom, -8)
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(timeFormatter.string(from: entry.date))
                 UTCLabel()

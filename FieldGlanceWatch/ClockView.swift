@@ -65,6 +65,7 @@ private struct ClockPanel: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(zone.dateFormatter.string(from: date))
+                .padding(.bottom, -8)
             Text(zone.timeFormatter.string(from: date))
             ZoneLabel(text: label)
         }

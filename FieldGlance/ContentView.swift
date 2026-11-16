@@ -8,7 +8,7 @@ import SwiftUI
 // Layout tuning:
 //   50   clock date/time and declination value font
 //   20   zone label, WMM label, coords font
-//    2   spacing between lines within a panel
+//    4   spacing between lines within a panel
 //   50   spacing between panels
 //   36   horizontal padding
 //   48   vertical padding
@@ -20,10 +20,11 @@ private struct ClockPanel: View {
     let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(zone.dateFormatter.string(from: date))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
+                .padding(.bottom, -6)
             Text(zone.timeFormatter.string(from: date))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -77,7 +78,7 @@ struct ContentView: View {
 
     // Extracted so the @StateObject model isn't inside the TimelineView closure
     private var declinationPanel: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 4) {
             if let d = model.declination {
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text(String(format: "%.1f° %@", abs(d), d >= 0 ? "E" : "W"))
