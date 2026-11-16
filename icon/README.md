@@ -15,10 +15,10 @@ so it never ends up in an app target.
 
 The SVG has a 1024 × 1024 pixel canvas (`viewBox="0 0 1024 1024"`), three elements:
 
-| Element | Color |
-|---|---|---|
-| the letter F | `#0091ff` |
-| the letter G | `#ff9230` |
+| Element                        | Color     |
+| ------------------------------ | --------- |
+| the letter F                   | `#0091ff` |
+| the letter G                   | `#ff9230` |
 | arrow leaning like a backslash | `#30d158` |
 
 Rules for the SVG:
