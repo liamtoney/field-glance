@@ -77,6 +77,9 @@ struct ContentView: View {
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { model.start() }
         }
+        .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
     }
 
     // Extracted so the @StateObject model isn't inside the TimelineView closure
