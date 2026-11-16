@@ -1,6 +1,13 @@
 name: Build
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'FieldGlance/**'
+      - 'FieldGlanceWatch/**'
+      - 'FieldGlanceWidget/**'
+      - 'FieldGlance.xcodeproj/**'
+      - '.github/workflows/build.yml'
 
 jobs:
   build:
