@@ -19,6 +19,7 @@ private struct ClockPanel: View {
     let zone: Zone
     let label: String
     let color: Color
+    var secondaryOpacity: Double = 0.6
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -31,7 +32,7 @@ private struct ClockPanel: View {
                 .minimumScaleFactor(0.5)
             Text(label)
                 .font(.system(size: 18))
-                .opacity(0.6)
+                .opacity(secondaryOpacity)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
         }
@@ -55,7 +56,8 @@ struct ContentView: View {
                         date: context.date,
                         zone: localZone,
                         label: localLabel(for: localZone.timeZone, at: context.date),
-                        color: .blue
+                        color: .blue,
+                        secondaryOpacity: 0.7  // Slightly stronger for blue
                     )
                     ClockPanel(
                         date: context.date,
