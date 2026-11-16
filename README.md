@@ -5,7 +5,7 @@
 <h1 align="center">Field Glance</h1>
 
 <p align="center">
-  Local time, UTC time, and magnetic declination, at a glance.<br>
+  Local time, UTC time, and magnetic declination — at a glance.<br>
   For iPhone and Apple Watch.
 </p>
 
