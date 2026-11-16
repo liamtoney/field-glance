@@ -98,7 +98,7 @@ struct ContentView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
             }
-            Text(WMM.isValid(on: Date()) ? "DECLINATION • WMM2025" : "WMM2025 OUT OF DATE")
+            Text(WMM.isValid(on: Date()) ? "DECLINATION · WMM2025" : "WMM2025 OUT OF DATE")
                 .font(.system(size: 18))
                 .opacity(0.6)
                 .lineLimit(1)
