@@ -11,8 +11,21 @@
     ],
   },
   "files": [
-    { "kind": "folder", "path": "FieldGlance", "target-membership": [ "FieldGlance" ] },
     {
+      "kind": "folder",
+      "path": "FieldGlance",
+      "target-membership": [
+        "FieldGlance",
+      ],
+      "membership-exceptions": [
+        {
+          "target": "FieldGlanceWatch",
+          "inclusions": [
+            "FieldGlance.icon",
+          ],
+        },
+      ],
+    }, {
       "kind": "folder",
       "path": "FieldGlanceWatch",
       "target-membership": [
@@ -84,7 +97,7 @@
         },
       ],
       "build-settings": {
-        "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
+        "ASSETCATALOG_COMPILER_APPICON_NAME": "FieldGlance",
         "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "AccentColor",
         "CODE_SIGN_ENTITLEMENTS": "FieldGlance/FieldGlance.entitlements",
         "CODE_SIGN_STYLE": "Automatic",
@@ -141,7 +154,7 @@
         },
       ],
       "build-settings": {
-        "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
+        "ASSETCATALOG_COMPILER_APPICON_NAME": "FieldGlance",
         "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "AccentColor",
         "CODE_SIGN_ENTITLEMENTS": "FieldGlanceWatch/FieldGlanceWatch.entitlements",
         "CODE_SIGN_STYLE": "Automatic",
