@@ -1,0 +1,27 @@
+:root {
+    --body-font-size: 0.8rem;
+}
+
+/* Font size adjustments */
+.md-typeset {
+    font-size: var(--body-font-size);
+    line-height: 1.6;
+}
+
+/* Font size adjustments */
+.md-typeset .admonition {
+    font-size: var(--body-font-size);
+}
+
+/* Email link formatting */
+.md-typeset a.email {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: var(--md-code-font);
+}
+
+/* Make body text content area narrower */
+.md-grid {
+    max-width: 40rem;
+}
