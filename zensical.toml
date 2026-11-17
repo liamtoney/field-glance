@@ -7,6 +7,9 @@ docs_dir = "pages"
 font.text = "IBM Plex Sans"
 font.code = "JetBrains Mono"
 
+[project.theme.icon]
+logo = "lucide/clock-arrow-up"
+
 [[project.theme.palette]]
 media = "(prefers-color-scheme)"
 toggle.icon = "lucide/sun-moon"
