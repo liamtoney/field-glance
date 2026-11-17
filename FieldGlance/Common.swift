@@ -1,9 +1,21 @@
 //
-//  ClockFormat.swift
+//  Common.swift
 //  FieldGlance
+//
+//  Constants and helpers shared across the iPhone app, Watch app, and widget extension.
 //
 
 import Foundation
+
+// MARK: - App Group / Widget
+
+let sharedGroupID = "group.com.liamtoney.fieldglance"
+let declKey = "declination"
+
+let utcWidgetURL  = URL(string: "fieldglancewatch://page/utc")!
+let declWidgetURL = URL(string: "fieldglancewatch://page/decl")!
+
+// MARK: - Clock formatting
 
 struct Zone {
     let timeZone: TimeZone
@@ -25,6 +37,9 @@ struct Zone {
     }
 }
 
+let utcZone   = Zone(TimeZone(secondsFromGMT: 0)!)
+let localZone = Zone(.autoupdatingCurrent)
+
 func localLabel(for timeZone: TimeZone, at date: Date) -> String {
     let seconds = timeZone.secondsFromGMT(for: date)
     let sign = seconds < 0 ? "−" : "+"
@@ -41,5 +56,17 @@ func localLabel(for timeZone: TimeZone, at date: Date) -> String {
     return "\(abbreviation) (\(offset))"
 }
 
-let utcZone  = Zone(TimeZone(secondsFromGMT: 0)!)
-let localZone = Zone(.autoupdatingCurrent)
+// MARK: - Declination formatting
+
+func declinationString(_ degrees: Double) -> String {
+    String(format: "%.1f° %@", abs(degrees), degrees >= 0 ? "E" : "W")
+}
+
+func coordinateString(lat: Double, lon: Double) -> String {
+    let latStr = String(format: "%@%.4f°", lat < 0 ? "−" : "", abs(lat))
+    let lonStr = String(format: "%@%.4f°", lon < 0 ? "−" : "", abs(lon))
+    return "(\(latStr), \(lonStr))"
+}
+
+let wmmLabel = "DECLINATION · WMM2025"
+let wmmExpiredLabel = "WMM2025 OUT OF DATE"

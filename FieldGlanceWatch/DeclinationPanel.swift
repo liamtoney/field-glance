@@ -12,20 +12,18 @@ struct DeclinationPanel: View {
         VStack(alignment: .leading) {
             if let d = model.declination {
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    Text(String(format: "%.1f° %@", abs(d), d >= 0 ? "E" : "W"))
+                    Text(declinationString(d))
                     Image(systemName: "arrow.up")
                         .rotationEffect(.degrees(d))
                 }
             } else {
                 Text(model.status)
             }
-            Text(WMM.isValid(on: Date()) ? "DECLINATION · WMM2025" : "WMM2025 OUT OF DATE")
+            Text(WMM.isValid(on: Date()) ? wmmLabel : wmmExpiredLabel)
                 .font(.caption2)
                 .opacity(0.7)
             if let loc = model.location {
-                let lat = String(format: "%@%.4f°", loc.latitude  < 0 ? "−" : "", abs(loc.latitude))
-                let lon = String(format: "%@%.4f°", loc.longitude < 0 ? "−" : "", abs(loc.longitude))
-                Text("(\(lat), \(lon))")
+                Text(coordinateString(lat: loc.latitude, lon: loc.longitude))
                     .font(.caption2)
                     .opacity(0.7)
             }

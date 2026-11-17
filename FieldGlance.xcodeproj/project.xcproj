@@ -21,27 +21,21 @@
         {
           "target": "FieldGlanceWatch",
           "inclusions": [
+            "Common.swift",
             "DeclinationModel.swift",
             "FieldGlance.icon",
             "WMM.swift",
           ],
-        },
-      ],
-    }, {
-      "kind": "folder",
-      "path": "FieldGlanceWatch",
-      "target-membership": [
-        "FieldGlanceWatch",
-      ],
-      "membership-exceptions": [
-        {
+        }, {
           "target": "FieldGlanceWidget",
           "inclusions": [
-            "SharedWatchConstants.swift",
+            "Common.swift",
           ],
         },
       ],
-    }, {
+    },
+    { "kind": "folder", "path": "FieldGlanceWatch", "target-membership": [ "FieldGlanceWatch" ] },
+    {
       "kind": "folder",
       "path": "FieldGlanceWidget",
       "target-membership": [

@@ -87,7 +87,7 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 4) {
             if let d = model.declination {
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    Text(String(format: "%.1f° %@", abs(d), d >= 0 ? "E" : "W"))
+                    Text(declinationString(d))
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
                     Image(systemName: "arrow.up")
@@ -98,15 +98,13 @@ struct ContentView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
             }
-            Text(WMM.isValid(on: Date()) ? "DECLINATION · WMM2025" : "WMM2025 OUT OF DATE")
+            Text(WMM.isValid(on: Date()) ? wmmLabel : wmmExpiredLabel)
                 .font(.system(size: 18))
                 .opacity(0.6)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             if let loc = model.location {
-                let lat = String(format: "%@%.4f°", loc.latitude  < 0 ? "−" : "", abs(loc.latitude))
-                let lon = String(format: "%@%.4f°", loc.longitude < 0 ? "−" : "", abs(loc.longitude))
-                Text("(\(lat), \(lon))")
+                Text(coordinateString(lat: loc.latitude, lon: loc.longitude))
                     .font(.system(size: 18))
                     .opacity(0.6)
                     .lineLimit(1)
