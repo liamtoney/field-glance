@@ -20,8 +20,3 @@
     text-decoration: none;
     font-family: var(--md-code-font);
 }
-
-/* Make body text content area narrower */
-.md-grid {
-    max-width: 40rem;
-}

@@ -1,13 +1,6 @@
----
-title: ""
-hide:
-  - navigation
-  - toc
----
-
 # Privacy Policy
 
-!!! info ""
+!!! warning ""
 
     Effective 2026-11-17
 
