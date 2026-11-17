@@ -2,3 +2,28 @@
 site_name = "Field Glance"
 site_url = "https://field-glance.liam.earth"
 docs_dir = "pages"
+
+[project.theme]
+font.text = "IBM Plex Sans"
+font.code = "JetBrains Mono"
+logo = "../icon/FieldGlance.png"
+favicon = "../icon/FieldGlance.png"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+
+# Palette toggle for dark mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+
+[project.markdown_extensions]
+smarty = { "smart_dashes" = false, "smart_quotes" = true, "smart_ellipses" = false }
