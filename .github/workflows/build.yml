@@ -1,4 +1,4 @@
-name: Build
+name: Build app
 
 on:
   push:
@@ -12,13 +12,10 @@ on:
 jobs:
   build:
     runs-on: xcode-27
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode.app
-
       - name: Build iPhone app
         run: |
           xcodebuild build \
@@ -26,7 +23,6 @@ jobs:
             -scheme FieldGlance \
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
-
       - name: Build Watch app
         run: |
           xcodebuild build \
@@ -34,7 +30,6 @@ jobs:
             -scheme FieldGlanceWatch \
             -destination 'generic/platform=watchOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
-
       - name: Build Widget
         run: |
           xcodebuild build \
