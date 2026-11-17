@@ -1,5 +1,5 @@
 //
-//  SharedConstants.swift
+//  SharedWatchConstants.swift
 //  FieldGlanceWatch
 //
 //  Constants shared between the app and widget extension.

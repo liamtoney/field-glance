@@ -1,6 +1,6 @@
 //
 //  DeclinationModel.swift
-//  FieldGlanceWatch
+//  FieldGlance
 //
 //  Gets one location fix and computes magnetic declination with WMM2025.
 //
@@ -61,7 +61,7 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
         )
         declination = d
         location = fix.coordinate
-        // Share with widget
+        // Share with widget (watchOS only!)
         #if os(watchOS)
         UserDefaults(suiteName: sharedGroupID)?.set(d, forKey: declKey)
         WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")

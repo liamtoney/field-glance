@@ -1,6 +1,6 @@
 //
 //  WMM.swift
-//  FieldGlanceWatch
+//  FieldGlance
 //
 //  Magnetic declination from the World Magnetic Model 2025 (degree 12, valid 2025.0 to 2030.0).
 //  Coefficients are from the NOAA NCEI / British Geological Survey WMM.COF file.

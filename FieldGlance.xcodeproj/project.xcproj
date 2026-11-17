@@ -21,7 +21,9 @@
         {
           "target": "FieldGlanceWatch",
           "inclusions": [
+            "DeclinationModel.swift",
             "FieldGlance.icon",
+            "WMM.swift",
           ],
         },
       ],
@@ -33,15 +35,9 @@
       ],
       "membership-exceptions": [
         {
-          "target": "FieldGlance",
-          "inclusions": [
-            "DeclinationModel.swift",
-            "WMM.swift",
-          ],
-        }, {
           "target": "FieldGlanceWidget",
           "inclusions": [
-            "SharedConstants.swift",
+            "SharedWatchConstants.swift",
           ],
         },
       ],
