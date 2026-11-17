@@ -1,0 +1,4 @@
+[project]
+site_name = "Field Glance"
+site_url = "https://field-glance.liam.earth"
+docs_dir = "pages"
