@@ -3,8 +3,8 @@
 //  FieldGlanceWidget
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 private func utcFormatter(_ format: String) -> DateFormatter {
     let f = DateFormatter()
