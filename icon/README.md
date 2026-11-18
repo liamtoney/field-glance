@@ -32,7 +32,7 @@ Rules for the SVG:
    with the updated file.
 3. Check the previews: Default, Dark, and watchOS. Watch icons are circular, so check
    that nothing is clipped.
-4. Save, export a PNG, and commit the SVG, the PNG, and the `.icon` together.
+4. Save, export a PNG @ 128pt, and commit the SVG, the PNG, and the `.icon` together.
 
 ## Xcode setup
 

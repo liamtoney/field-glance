@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="pages/static/FieldGlance.png" width="128" alt="Field Glance app icon">
+  <img src="pages/static/FieldGlance.png" alt="Field Glance app icon">
 </p>
 
 <h1 align="center">Field Glance</h1>
