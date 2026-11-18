@@ -17,6 +17,3 @@ accent = "custom"
 [project.markdown_extensions]
 admonition = {}
 smarty = { "smart_dashes" = false, "smart_quotes" = true, "smart_ellipses" = false }
-
-[project.plugins.redirects.redirect_maps]
-"index.md" = "privacy-policy.md"
