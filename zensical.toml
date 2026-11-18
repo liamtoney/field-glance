@@ -12,6 +12,8 @@ favicon = "static/FieldGlance.png"
 
 [project.theme.palette]
 scheme = "slate"
+primary = "custom"
+accent = "custom"
 
 [project.markdown_extensions]
 admonition = {}
