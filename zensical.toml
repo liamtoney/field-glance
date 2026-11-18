@@ -5,8 +5,7 @@ docs_dir = "pages"
 extra_css = ["stylesheets/extra.css"]
 
 [project.theme]
-font.text = "IBM Plex Sans"
-font.code = "JetBrains Mono"
+font = false
 logo = "static/FieldGlance.png"
 favicon = "static/FieldGlance.png"
 
