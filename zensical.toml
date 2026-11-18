@@ -10,21 +10,8 @@ font.code = "JetBrains Mono"
 logo = "static/FieldGlance.png"
 favicon = "static/FieldGlance.png"
 
-[[project.theme.palette]]
-media = "(prefers-color-scheme)"
-toggle.icon = "lucide/sun-moon"
-
-# Palette toggle for light mode
-[[project.theme.palette]]
-media = "(prefers-color-scheme: light)"
-scheme = "default"
-toggle.icon = "lucide/sun"
-
-# Palette toggle for dark mode
-[[project.theme.palette]]
-media = "(prefers-color-scheme: dark)"
+[project.theme.palette]
 scheme = "slate"
-toggle.icon = "lucide/moon"
 
 [project.markdown_extensions]
 admonition = {}
