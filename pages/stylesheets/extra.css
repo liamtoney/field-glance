@@ -52,7 +52,7 @@
 
 /* Admonition tweaks: orange text on a tinted orange box */
 .md-typeset .admonition {
-  font-size: var(--body-font-size);
+  font-size: 0.7rem;
   background-color: var(--md-admonition-bg-color) !important;
 }
 
