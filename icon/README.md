@@ -7,9 +7,8 @@
 - `FieldGlance/FieldGlance.icon` is the Icon Composer file that Xcode builds. It
   contains an imported copy of the full SVG, and it is the source of truth for how the
   artwork is composed (background fill, effects, per-platform tweaks).
-
-Commit both. The `icon/` folder sits outside the Xcode synchronized folders on purpose,
-so it never ends up in an app target.
+- `pages/static/FieldGlance.png` is a PNG export of the icon for use on web pages and
+  documentation. It is not used in the app.
 
 ## Artwork
 
@@ -33,7 +32,7 @@ Rules for the SVG:
    with the updated file.
 3. Check the previews: Default, Dark, and watchOS. Watch icons are circular, so check
    that nothing is clipped.
-4. Save, and commit the SVG and the `.icon` together.
+4. Save, export a PNG, and commit the SVG, the PNG, and the `.icon` together.
 
 ## Xcode setup
 
