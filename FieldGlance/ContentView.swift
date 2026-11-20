@@ -6,13 +6,16 @@
 import SwiftUI
 
 // Layout tuning:
-//   48    clock date/time and declination value font
-//   18    zone label, WMM label, coords font
 //    4    spacing between lines within a panel
 //   50    spacing between panels
 //   36    horizontal padding
 //   48    vertical padding
 //    0.6  opacity for secondary text
+
+// Zone label, WMM label, coords font
+private let subFont = Font.system(size: 18)
+// Clock date/time and declination value font
+private let bigFontSize: CGFloat = 48
 
 private struct ClockPanel: View {
     let date: Date
@@ -29,11 +32,11 @@ private struct ClockPanel: View {
             Text(zone.timeFormatter.string(from: date))
                 .lineLimit(1)
             Text(label)
-                .font(.system(size: 18))
+                .font(subFont)
                 .opacity(secondaryOpacity)
                 .lineLimit(1)
         }
-        .font(.system(size: 48, weight: .semibold, design: .monospaced))
+        .font(.system(size: bigFontSize, weight: .semibold, design: .monospaced))
         .foregroundStyle(color)
         .accessibilityElement(children: .combine)
     }
@@ -95,17 +98,17 @@ struct ContentView: View {
                     .minimumScaleFactor(0.5)
             }
             Text(WMM.isValid(on: Date()) ? wmmLabel : wmmExpiredLabel)
-                .font(.system(size: 18))
+                .font(subFont)
                 .opacity(0.6)
                 .lineLimit(1)
             if let loc = model.location {
                 Text(coordinateString(lat: loc.latitude, lon: loc.longitude))
-                    .font(.system(size: 18))
+                    .font(subFont)
                     .opacity(0.6)
                     .lineLimit(1)
             }
         }
-        .font(.system(size: 48, weight: .semibold))
+        .font(.system(size: bigFontSize, weight: .semibold))
         .foregroundStyle(.green)
         .accessibilityElement(children: .combine)
         .onAppear { model.start() }
