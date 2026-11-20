@@ -19,6 +19,11 @@
       ],
       "membership-exceptions": [
         {
+          "target": "FieldGlance",
+          "exclusions": [
+            "Info.plist",
+          ],
+        }, {
           "target": "FieldGlanceWatch",
           "inclusions": [
             "Common.swift",
@@ -35,9 +40,21 @@
           ],
         },
       ],
-    },
-    { "kind": "folder", "path": "FieldGlanceWatch", "target-membership": [ "FieldGlanceWatch" ] },
-    {
+    }, {
+      "kind": "folder",
+      "path": "FieldGlanceWatch",
+      "target-membership": [
+        "FieldGlanceWatch",
+      ],
+      "membership-exceptions": [
+        {
+          "target": "FieldGlanceWatch",
+          "exclusions": [
+            "Info.plist",
+          ],
+        },
+      ],
+    }, {
       "kind": "folder",
       "path": "FieldGlanceWidget",
       "target-membership": [
@@ -96,6 +113,7 @@
         "DEVELOPMENT_TEAM": "762K287A88",
         "ENABLE_PREVIEWS": "YES",
         "GENERATE_INFOPLIST_FILE": "YES",
+        "INFOPLIST_FILE": "FieldGlance/Info.plist",
         "INFOPLIST_KEY_CFBundleDisplayName": "Field Glance",
         "INFOPLIST_KEY_ITSAppUsesNonExemptEncryption": "NO",
         "INFOPLIST_KEY_NSLocationWhenInUseUsageDescription": "Your location is used to calculate local magnetic declination.",
@@ -153,6 +171,7 @@
         "DEVELOPMENT_TEAM": "762K287A88",
         "ENABLE_PREVIEWS": "YES",
         "GENERATE_INFOPLIST_FILE": "YES",
+        "INFOPLIST_FILE": "FieldGlanceWatch/Info.plist",
         "INFOPLIST_KEY_CFBundleDisplayName": "Field Glance",
         "INFOPLIST_KEY_ITSAppUsesNonExemptEncryption": "NO",
         "INFOPLIST_KEY_NSLocationWhenInUseUsageDescription": "Your location is used to calculate local magnetic declination.",
