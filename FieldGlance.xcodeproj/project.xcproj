@@ -24,12 +24,14 @@
             "Common.swift",
             "DeclinationModel.swift",
             "FieldGlance.icon",
+            "PrivacyInfo.xcprivacy",
             "WMM.swift",
           ],
         }, {
           "target": "FieldGlanceWidget",
           "inclusions": [
             "Common.swift",
+            "PrivacyInfo.xcprivacy",
           ],
         },
       ],
