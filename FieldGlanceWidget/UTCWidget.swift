@@ -17,12 +17,12 @@ private func utcFormatter(_ format: String) -> DateFormatter {
 private let dateFormatter = utcFormatter("yyyy-MM-dd")
 private let timeFormatter = utcFormatter("HH:mm")
 
-private let utcFont = Font.system(size: 26, weight: .semibold, design: .monospaced)
+private let utcFont = Font.system(size: 24, weight: .semibold, design: .monospaced)
 
 private struct UTCLabel: View {
     var body: some View {
         Text("UTC")
-            .font(.caption2)
+            .font(.system(size: 13))
             .opacity(0.7)
     }
 }
@@ -50,20 +50,20 @@ struct UTCProvider: TimelineProvider {
 
 struct UTCView: View {
     let entry: UTCEntry
-    @Environment(\.widgetFamily) var family
 
     var body: some View {
         VStack(alignment: .leading) {
             Text(dateFormatter.string(from: entry.date))
+                .lineLimit(1)
                 .padding(.bottom, -8)
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(timeFormatter.string(from: entry.date))
+                    .lineLimit(1)
                 UTCLabel()
             }
         }
         .font(utcFont)
         .foregroundStyle(.orange)
-        .padding(.top, 12)
         .widgetURL(utcWidgetURL)
     }
 }
@@ -76,7 +76,7 @@ struct UTCComplication: Widget {
         }
         .configurationDisplayName("UTC Date and Time")
         .description("Current date and time in UTC.")
-        .supportedFamilies([.accessoryRectangular, .accessoryInline])
+        .supportedFamilies([.accessoryRectangular])
     }
 }
 

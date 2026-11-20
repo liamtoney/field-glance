@@ -12,8 +12,9 @@ private struct ZoneLabel: View {
 
     var body: some View {
         Text(text)
-            .font(.caption2)
+            .font(.system(size: 13))
             .opacity(0.7)
+            .lineLimit(1)
     }
 }
 
@@ -26,8 +27,10 @@ private struct ClockPanel: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(zone.dateFormatter.string(from: date))
+                .lineLimit(1)
                 .padding(.bottom, -8)
             Text(zone.timeFormatter.string(from: date))
+                .lineLimit(1)
             ZoneLabel(text: label)
         }
         .font(clockFont)
