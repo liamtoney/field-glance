@@ -6,7 +6,7 @@
 import SwiftUI
 
 // Layout tuning:
-//   50    clock date/time and declination value font
+//   48    clock date/time and declination value font
 //   18    zone label, WMM label, coords font
 //    4    spacing between lines within a panel
 //   50    spacing between panels
@@ -25,18 +25,15 @@ private struct ClockPanel: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(zone.dateFormatter.string(from: date))
                 .lineLimit(1)
-                .minimumScaleFactor(0.5)
                 .padding(.bottom, -10)
             Text(zone.timeFormatter.string(from: date))
                 .lineLimit(1)
-                .minimumScaleFactor(0.5)
             Text(label)
                 .font(.system(size: 18))
                 .opacity(secondaryOpacity)
                 .lineLimit(1)
-                .minimumScaleFactor(0.5)
         }
-        .font(.system(size: 50, weight: .semibold, design: .monospaced))
+        .font(.system(size: 48, weight: .semibold, design: .monospaced))
         .foregroundStyle(color)
         .accessibilityElement(children: .combine)
     }
@@ -89,7 +86,6 @@ struct ContentView: View {
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text(declinationString(d))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.5)
                     Image(systemName: "arrow.up")
                         .rotationEffect(.degrees(d))
                 }
@@ -102,16 +98,14 @@ struct ContentView: View {
                 .font(.system(size: 18))
                 .opacity(0.6)
                 .lineLimit(1)
-                .minimumScaleFactor(0.5)
             if let loc = model.location {
                 Text(coordinateString(lat: loc.latitude, lon: loc.longitude))
                     .font(.system(size: 18))
                     .opacity(0.6)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.5)
             }
         }
-        .font(.system(size: 50, weight: .semibold))
+        .font(.system(size: 48, weight: .semibold))
         .foregroundStyle(.green)
         .accessibilityElement(children: .combine)
         .onAppear { model.start() }
