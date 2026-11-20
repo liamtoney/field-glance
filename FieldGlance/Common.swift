@@ -63,8 +63,8 @@ func declinationString(_ degrees: Double) -> String {
 }
 
 func coordinateString(lat: Double, lon: Double) -> String {
-    let latStr = String(format: "%@%.4f°", lat < 0 ? "−" : "", abs(lat))
-    let lonStr = String(format: "%@%.4f°", lon < 0 ? "−" : "", abs(lon))
+    let latStr = String(format: "%@%.2f°", lat < 0 ? "−" : "", abs(lat))
+    let lonStr = String(format: "%@%.2f°", lon < 0 ? "−" : "", abs(lon))
     return "(\(latStr), \(lonStr))"
 }
 
