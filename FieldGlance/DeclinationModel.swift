@@ -15,7 +15,7 @@ import WidgetKit
 final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var declination: Double?  // degrees, east positive
     @Published var location: CLLocationCoordinate2D?
-    @Published var status = "Locating…"
+    @Published var status = "Locating..."
 
     private let manager = CLLocationManager()
 
@@ -35,6 +35,7 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
             manager.requestLocation()
         default:
             status = "No location access"
+            clearSharedDeclination()
         }
     }
 
@@ -44,6 +45,7 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
             manager.requestLocation()
         case .denied, .restricted:
             status = "No location access"
+            clearSharedDeclination()
         default:
             break
         }
@@ -70,5 +72,15 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         status = "Location error"
+        clearSharedDeclination()
+    }
+
+    private func clearSharedDeclination() {
+        location = nil
+        declination = nil
+        #if os(watchOS)
+        UserDefaults(suiteName: sharedGroupID)?.removeObject(forKey: declKey)
+        WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")
+        #endif
     }
 }
