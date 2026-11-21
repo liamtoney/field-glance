@@ -49,13 +49,11 @@ struct DeclView: View {
     var body: some View {
         if let d = entry.declination {
             VStack(spacing: 0) {
-                Text(String(format: "%.1f°", abs(d)))
+                Text(declinationMagnitude(d))
                     .lineLimit(1)
                 HStack(spacing: 2) {
-                    Text(d >= 0 ? "E" : "W")
-                    Image(systemName: "arrow.up")
-                        .rotationEffect(.degrees(d))
-                        .accessibilityHidden(true)
+                    Text(declinationDirection(d))
+                    DeclinationArrow(degrees: d)
                 }
             }
             .font(declFont)
@@ -74,7 +72,7 @@ struct DeclView: View {
 
 struct DeclComplication: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "DeclComplication", provider: DeclProvider()) { entry in
+        StaticConfiguration(kind: declWidgetKind, provider: DeclProvider()) { entry in
             DeclView(entry: entry)
                 .containerBackground(.clear, for: .widget)
         }

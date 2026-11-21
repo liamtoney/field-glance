@@ -6,26 +6,8 @@
 import SwiftUI
 import WidgetKit
 
-private func utcFormatter(_ format: String) -> DateFormatter {
-    let f = DateFormatter()
-    f.locale = Locale(identifier: "en_US_POSIX")
-    f.timeZone = TimeZone(secondsFromGMT: 0)
-    f.dateFormat = format
-    return f
-}
-
-private let dateFormatter = utcFormatter("yyyy-MM-dd")
-private let timeFormatter = utcFormatter("HH:mm")
-
-private let utcFont = Font.system(size: 24, weight: .semibold, design: .monospaced)
-
-private struct UTCLabel: View {
-    var body: some View {
-        Text("UTC")
-            .font(.system(size: 13))
-            .opacity(0.7)
-    }
-}
+// Complications only update once a minute, so drop the seconds
+private let shortTimeFormatter = Zone.makeFormatter("HH:mm", utcZone.timeZone)
 
 struct UTCEntry: TimelineEntry {
     let date: Date
@@ -53,16 +35,17 @@ struct UTCView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(dateFormatter.string(from: entry.date))
+            Text(utcZone.dateFormatter.string(from: entry.date))
                 .lineLimit(1)
                 .padding(.bottom, -8)
             HStack(alignment: .firstTextBaseline, spacing: 10) {
-                Text(timeFormatter.string(from: entry.date))
+                Text(shortTimeFormatter.string(from: entry.date))
                     .lineLimit(1)
-                UTCLabel()
+                Text("UTC")
+                    .secondaryText(watchSubFont)
             }
         }
-        .font(utcFont)
+        .font(watchClockFont)
         .foregroundStyle(.orange)
         .widgetURL(utcWidgetURL)
     }

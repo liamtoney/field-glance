@@ -28,6 +28,7 @@
           "inclusions": [
             "Common.swift",
             "DeclinationModel.swift",
+            "DeclinationPanel.swift",
             "FieldGlance.icon",
             "PrivacyInfo.xcprivacy",
             "WMM.swift",

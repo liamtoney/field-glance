@@ -2,18 +2,45 @@
 //  Common.swift
 //  FieldGlance
 //
-//  Constants and helpers shared across the iPhone app, Watch app, and widget extension.
+//  Constants, helpers, and views shared across the iPhone app, Watch app, and widget extension.
 //
 
-import Foundation
+import SwiftUI
 
 // MARK: - App Group / Widget
 
 let sharedGroupID = "group.com.liamtoney.fieldglance"
 let declKey = "declination"
+let declWidgetKind = "DeclComplication"
 
 let utcWidgetURL = URL(string: "fieldglancewatch://page/utc")!
 let declWidgetURL = URL(string: "fieldglancewatch://page/decl")!
+
+// MARK: - Fonts and styling
+
+// Watch app and complication fonts
+let watchClockFont = Font.system(size: 24, weight: .semibold, design: .monospaced)
+let watchSubFont = Font.system(size: 13)
+
+extension View {
+    /// Small, dimmed, single-line text used for labels under the big values.
+    func secondaryText(_ font: Font) -> some View {
+        self.font(font).opacity(0.6).lineLimit(1)
+    }
+}
+
+/// Sizing that differs between the iPhone and Watch layouts.
+struct PanelStyle {
+    let clockFont: Font
+    let declinationFont: Font
+    let subFont: Font
+    /// Spacing between lines within a panel (nil for the system default)
+    let lineSpacing: CGFloat?
+    /// Spacing between panels
+    let panelSpacing: CGFloat
+    /// Pulls the time up closer to the date
+    let dateBottomPadding: CGFloat
+}
 
 // MARK: - Clock formatting
 
@@ -28,7 +55,7 @@ struct Zone {
         timeFormatter = Zone.makeFormatter("HH:mm:ss", timeZone)
     }
 
-    private static func makeFormatter(_ format: String, _ timeZone: TimeZone) -> DateFormatter {
+    static func makeFormatter(_ format: String, _ timeZone: TimeZone) -> DateFormatter {
         let f = DateFormatter()
         f.locale = Locale(identifier: "en_US_POSIX")
         f.timeZone = timeZone
@@ -81,10 +108,69 @@ private func zoneAbbreviation(for timeZone: TimeZone, at date: Date) -> String? 
     return nil
 }
 
+// MARK: - Clock views
+
+private struct ClockPanel: View {
+    let date: Date
+    let zone: Zone
+    let label: String
+    let color: Color
+    let style: PanelStyle
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: style.lineSpacing) {
+            Text(zone.dateFormatter.string(from: date))
+                .lineLimit(1)
+                .padding(.bottom, style.dateBottomPadding)
+            Text(zone.timeFormatter.string(from: date))
+                .lineLimit(1)
+            Text(label)
+                .secondaryText(style.subFont)
+        }
+        .font(style.clockFont)
+        .foregroundStyle(color)
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// Local and UTC clocks, updated every second.
+struct ClocksView: View {
+    let style: PanelStyle
+
+    var body: some View {
+        TimelineView(.periodic(from: .now, by: 1)) { context in
+            VStack(alignment: .leading, spacing: style.panelSpacing) {
+                ClockPanel(
+                    date: context.date,
+                    zone: localZone,
+                    label: localLabel(for: localZone.timeZone, at: context.date),
+                    color: .blue,
+                    style: style
+                )
+                ClockPanel(
+                    date: context.date,
+                    zone: utcZone,
+                    label: "UTC",
+                    color: .orange,
+                    style: style
+                )
+            }
+        }
+    }
+}
+
 // MARK: - Declination formatting
 
+func declinationMagnitude(_ degrees: Double) -> String {
+    String(format: "%.1f°", abs(degrees))
+}
+
+func declinationDirection(_ degrees: Double) -> String {
+    degrees >= 0 ? "E" : "W"
+}
+
 func declinationString(_ degrees: Double) -> String {
-    String(format: "%.1f° %@", abs(degrees), degrees >= 0 ? "E" : "W")
+    "\(declinationMagnitude(degrees)) \(declinationDirection(degrees))"
 }
 
 func coordinateString(lat: Double, lon: Double) -> String {
@@ -95,3 +181,16 @@ func coordinateString(lat: Double, lon: Double) -> String {
 
 let wmmLabel = "DECLINATION · WMM2025"
 let wmmExpiredLabel = "WMM2025 OUT OF DATE"
+
+// MARK: - Declination views
+
+/// North arrow rotated by the declination. Hidden from VoiceOver since the text already says E/W.
+struct DeclinationArrow: View {
+    let degrees: Double
+
+    var body: some View {
+        Image(systemName: "arrow.up")
+            .rotationEffect(.degrees(degrees))
+            .accessibilityHidden(true)
+    }
+}
