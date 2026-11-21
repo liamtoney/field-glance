@@ -12,7 +12,7 @@ import Foundation
 let sharedGroupID = "group.com.liamtoney.fieldglance"
 let declKey = "declination"
 
-let utcWidgetURL  = URL(string: "fieldglancewatch://page/utc")!
+let utcWidgetURL = URL(string: "fieldglancewatch://page/utc")!
 let declWidgetURL = URL(string: "fieldglancewatch://page/decl")!
 
 // MARK: - Clock formatting
@@ -37,7 +37,7 @@ struct Zone {
     }
 }
 
-let utcZone   = Zone(TimeZone(secondsFromGMT: 0)!)
+let utcZone = Zone(TimeZone(secondsFromGMT: 0)!)
 let localZone = Zone(.autoupdatingCurrent)
 
 func localLabel(for timeZone: TimeZone, at date: Date) -> String {
@@ -45,7 +45,8 @@ func localLabel(for timeZone: TimeZone, at date: Date) -> String {
     let sign = seconds < 0 ? "−" : "+"
     let hours = abs(seconds) / 3600
     let minutes = (abs(seconds) % 3600) / 60
-    let offset = minutes == 0
+    let offset =
+        minutes == 0
         ? "UTC\(sign)\(hours)"
         : "UTC\(sign)\(hours):" + String(format: "%02d", minutes)
 
@@ -59,17 +60,21 @@ func localLabel(for timeZone: TimeZone, at date: Date) -> String {
 // used; elsewhere it falls back to "GMT+2". Check a handful of English locales so
 // regional names show up regardless of the device's locale. en_US is first so
 // North American zones are unaffected.
-private let abbreviationLocales = ["en_US", "en_GB", "en_IE", "en_AU", "en_IN", "en_ZA", "en_SG", "en_HK", "en_JP",
-                                   "en_CA", "en_NZ", "en_PT", "en_GU", "en_GY"]
-    .map(Locale.init(identifier:))
+private let abbreviationLocales = [
+    "en_US", "en_GB", "en_IE", "en_AU", "en_IN", "en_ZA", "en_SG", "en_HK", "en_JP",
+    "en_CA", "en_NZ", "en_PT", "en_GU", "en_GY",
+]
+.map(Locale.init(identifier:))
 
 private func zoneAbbreviation(for timeZone: TimeZone, at date: Date) -> String? {
-    let style: NSTimeZone.NameStyle = timeZone.isDaylightSavingTime(for: date)
+    let style: NSTimeZone.NameStyle =
+        timeZone.isDaylightSavingTime(for: date)
         ? .shortDaylightSaving
         : .shortStandard
     for locale in abbreviationLocales {
         if let name = timeZone.localizedName(for: style, locale: locale),
-           !name.hasPrefix("GMT") {
+            !name.hasPrefix("GMT")
+        {
             return name
         }
     }

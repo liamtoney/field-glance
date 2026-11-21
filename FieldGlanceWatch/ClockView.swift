@@ -74,7 +74,7 @@ struct ClockView: View {
         .tabViewStyle(.page)
         .onOpenURL { url in
             switch url {
-            case utcWidgetURL:  selectedPage = .clocks
+            case utcWidgetURL: selectedPage = .clocks
             case declWidgetURL: selectedPage = .declination
             default: break
             }

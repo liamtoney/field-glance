@@ -24,16 +24,21 @@ enum WMM {
 
     /// Magnetic declination in degrees, east positive.
     /// Height is in km above the WGS84 ellipsoid.
-    static func declination(latitude: Double, longitude: Double, heightKm: Double, date: Date) -> Double {
-        declination(latitude: latitude, longitude: longitude, heightKm: heightKm, year: decimalYear(date))
+    static func declination(latitude: Double, longitude: Double, heightKm: Double, date: Date)
+        -> Double
+    {
+        declination(
+            latitude: latitude, longitude: longitude, heightKm: heightKm, year: decimalYear(date))
     }
 
-    static func declination(latitude: Double, longitude: Double, heightKm: Double, year: Double) -> Double {
+    static func declination(latitude: Double, longitude: Double, heightKm: Double, year: Double)
+        -> Double
+    {
         let rad = Double.pi / 180
-        let a = 6378.137                    // WGS84 semi-major axis, km
+        let a = 6378.137  // WGS84 semi-major axis, km
         let flattening = 1 / 298.257223563
         let e2 = flattening * (2 - flattening)
-        let referenceRadius = 6371.2        // WMM geomagnetic reference radius, km
+        let referenceRadius = 6371.2  // WMM geomagnetic reference radius, km
         let maxDegree = 12
 
         let lat = latitude * rad
@@ -50,7 +55,8 @@ enum WMM {
 
         // Schmidt semi-normalized Legendre functions P[n][m] and their
         // derivatives dP[n][m] with respect to geocentric latitude
-        var P = [[Double]](repeating: [Double](repeating: 0, count: maxDegree + 1), count: maxDegree + 1)
+        var P = [[Double]](
+            repeating: [Double](repeating: 0, count: maxDegree + 1), count: maxDegree + 1)
         var dP = P
         P[0][0] = 1
         for m in 0...maxDegree {
@@ -74,8 +80,9 @@ enum WMM {
                     let denominator = sqrt(nd * nd - md * md)
                     let k = sqrt((nd - 1) * (nd - 1) - md * md)
                     P[n][m] = ((2 * nd - 1) * sinGC * P[n - 1][m] - k * P[n - 2][m]) / denominator
-                    dP[n][m] = ((2 * nd - 1) * (cosGC * P[n - 1][m] + sinGC * dP[n - 1][m])
-                                - k * dP[n - 2][m]) / denominator
+                    dP[n][m] =
+                        ((2 * nd - 1) * (cosGC * P[n - 1][m] + sinGC * dP[n - 1][m])
+                            - k * dP[n - 2][m]) / denominator
                 }
             }
         }

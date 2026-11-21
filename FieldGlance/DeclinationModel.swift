@@ -9,7 +9,7 @@ import Combine
 import CoreLocation
 
 #if os(watchOS)
-import WidgetKit
+    import WidgetKit
 #endif
 
 final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -65,8 +65,8 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
         location = fix.coordinate
         // Share with widget (watchOS only!)
         #if os(watchOS)
-        UserDefaults(suiteName: sharedGroupID)?.set(d, forKey: declKey)
-        WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")
+            UserDefaults(suiteName: sharedGroupID)?.set(d, forKey: declKey)
+            WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")
         #endif
     }
 
@@ -79,8 +79,8 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
         location = nil
         declination = nil
         #if os(watchOS)
-        UserDefaults(suiteName: sharedGroupID)?.removeObject(forKey: declKey)
-        WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")
+            UserDefaults(suiteName: sharedGroupID)?.removeObject(forKey: declKey)
+            WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")
         #endif
     }
 }
