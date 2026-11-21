@@ -18,6 +18,7 @@ struct DeclinationPanel: View {
                         .lineLimit(1)
                     Image(systemName: "arrow.up")
                         .rotationEffect(.degrees(d))
+                        .accessibilityHidden(true)
                 }
             } else {
                 Text(model.status)

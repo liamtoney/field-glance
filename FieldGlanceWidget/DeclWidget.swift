@@ -55,6 +55,7 @@ struct DeclView: View {
                     Text(d >= 0 ? "E" : "W")
                     Image(systemName: "arrow.up")
                         .rotationEffect(.degrees(d))
+                        .accessibilityHidden(true)
                 }
             }
             .font(declFont)
