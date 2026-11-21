@@ -22,6 +22,11 @@ enum WMM {
         return year >= epoch && year < validUntil
     }
 
+    /// Label naming the model, or flagging it as expired on the given date.
+    static func statusLabel(on date: Date) -> String {
+        isValid(on: date) ? wmmLabel : wmmExpiredLabel
+    }
+
     /// Magnetic declination in degrees, east positive.
     /// Height is in km above the WGS84 ellipsoid.
     static func declination(latitude: Double, longitude: Double, heightKm: Double, date: Date)
@@ -114,7 +119,7 @@ enum WMM {
 
     private static func decimalYear(_ date: Date) -> Double {
         var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        calendar.timeZone = utcZone.timeZone
         let year = calendar.component(.year, from: date)
         let start = calendar.date(from: DateComponents(year: year, month: 1, day: 1))!
         let end = calendar.date(from: DateComponents(year: year + 1, month: 1, day: 1))!

@@ -27,27 +27,25 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
     }
 
     func start() {
-        switch manager.authorizationStatus {
-        case .notDetermined:
-            // The authorization callback below requests the location once allowed
-            manager.requestWhenInUseAuthorization()
-        case .authorizedWhenInUse, .authorizedAlways:
-            manager.requestLocation()
-        default:
-            status = "No location access"
-            clearSharedDeclination()
-        }
+        handleAuthorization(manager.authorizationStatus, prompt: true)
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
+        handleAuthorization(manager.authorizationStatus, prompt: false)
+    }
+
+    /// Requests a fix if allowed. With `prompt`, asks for permission if not yet determined.
+    private func handleAuthorization(_ authorization: CLAuthorizationStatus, prompt: Bool) {
+        switch authorization {
+        case .notDetermined:
+            // The authorization callback requests the location once allowed
+            if prompt { manager.requestWhenInUseAuthorization() }
         case .authorizedWhenInUse, .authorizedAlways:
             manager.requestLocation()
         case .denied, .restricted:
-            status = "No location access"
-            clearSharedDeclination()
-        default:
-            break
+            fail("No location access")
+        @unknown default:
+            fail("No location access")
         }
     }
 
@@ -63,24 +61,30 @@ final class DeclinationModel: NSObject, ObservableObject, CLLocationManagerDeleg
         )
         declination = d
         location = fix.coordinate
-        // Share with widget (watchOS only!)
-        #if os(watchOS)
-            UserDefaults(suiteName: sharedGroupID)?.set(d, forKey: declKey)
-            WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")
-        #endif
+        publishToWidget(d)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        status = "Location error"
-        clearSharedDeclination()
+        fail("Location error")
     }
 
-    private func clearSharedDeclination() {
+    private func fail(_ message: String) {
+        status = message
         location = nil
         declination = nil
+        publishToWidget(nil)
+    }
+
+    /// Shares the declination with the complication (watchOS only!). Nil clears it.
+    private func publishToWidget(_ value: Double?) {
         #if os(watchOS)
-            UserDefaults(suiteName: sharedGroupID)?.removeObject(forKey: declKey)
-            WidgetCenter.shared.reloadTimelines(ofKind: "DeclComplication")
+            let defaults = UserDefaults(suiteName: sharedGroupID)
+            if let value {
+                defaults?.set(value, forKey: declKey)
+            } else {
+                defaults?.removeObject(forKey: declKey)
+            }
+            WidgetCenter.shared.reloadTimelines(ofKind: declWidgetKind)
         #endif
     }
 }
