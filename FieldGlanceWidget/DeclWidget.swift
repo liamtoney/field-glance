@@ -41,7 +41,7 @@ struct DeclProvider: TimelineProvider {
 
 // MARK: - Views
 
-private let declFont = Font.system(size: 13, weight: .semibold)
+private let declFont = Font.system(size: 15, weight: .semibold)
 
 struct DeclView: View {
     let entry: DeclEntry
