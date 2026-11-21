@@ -49,11 +49,31 @@ func localLabel(for timeZone: TimeZone, at date: Date) -> String {
         ? "UTC\(sign)\(hours)"
         : "UTC\(sign)\(hours):" + String(format: "%02d", minutes)
 
-    guard let abbreviation = timeZone.abbreviation(for: date),
-          !abbreviation.hasPrefix("GMT") else {
+    guard let abbreviation = zoneAbbreviation(for: timeZone, at: date) else {
         return offset
     }
     return "\(abbreviation) (\(offset))"
+}
+
+// ICU only provides an abbreviation (e.g. "CEST") in locales where it's commonly
+// used; elsewhere it falls back to "GMT+2". Check a handful of English locales so
+// regional names show up regardless of the device's locale. en_US is first so
+// North American zones are unaffected.
+private let abbreviationLocales = ["en_US", "en_GB", "en_IE", "en_AU", "en_IN", "en_ZA", "en_SG", "en_HK", "en_JP",
+                                   "en_CA", "en_NZ", "en_PT", "en_GU", "en_GY"]
+    .map(Locale.init(identifier:))
+
+private func zoneAbbreviation(for timeZone: TimeZone, at date: Date) -> String? {
+    let style: NSTimeZone.NameStyle = timeZone.isDaylightSavingTime(for: date)
+        ? .shortDaylightSaving
+        : .shortStandard
+    for locale in abbreviationLocales {
+        if let name = timeZone.localizedName(for: style, locale: locale),
+           !name.hasPrefix("GMT") {
+            return name
+        }
+    }
+    return nil
 }
 
 // MARK: - Declination formatting
