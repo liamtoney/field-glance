@@ -16,7 +16,11 @@ let declWidgetKind = "DeclComplication"
 let utcWidgetURL = URL(string: "fieldglancewatch://page/utc")!
 let declWidgetURL = URL(string: "fieldglancewatch://page/decl")!
 
-// MARK: - Fonts and styling
+// MARK: - Colors, fonts, and styling
+
+let localColor = Color.blue
+let utcColor = Color.orange
+let declColor = Color.green
 
 // Watch app and complication fonts
 let watchClockFont = Font.system(size: 24, weight: .semibold, design: .monospaced)
@@ -144,14 +148,14 @@ struct ClocksView: View {
                     date: context.date,
                     zone: localZone,
                     label: localLabel(for: localZone.timeZone, at: context.date),
-                    color: .blue,
+                    color: localColor,
                     style: style
                 )
                 ClockPanel(
                     date: context.date,
                     zone: utcZone,
                     label: "UTC",
-                    color: .orange,
+                    color: utcColor,
                     style: style
                 )
             }

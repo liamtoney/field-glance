@@ -34,7 +34,7 @@ struct DeclinationPanel: View {
             }
         }
         .font(style.declinationFont)
-        .foregroundStyle(.green)
+        .foregroundStyle(declColor)
         .accessibilityElement(children: .combine)
         .onAppear { model.start() }
         .onTapGesture { model.start() }  // tap to refresh location

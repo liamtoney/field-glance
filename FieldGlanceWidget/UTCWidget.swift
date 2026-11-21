@@ -46,7 +46,7 @@ struct UTCView: View {
             }
         }
         .font(watchClockFont)
-        .foregroundStyle(.orange)
+        .foregroundStyle(utcColor)
         .widgetURL(utcWidgetURL)
     }
 }

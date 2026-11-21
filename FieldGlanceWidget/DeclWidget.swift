@@ -57,12 +57,12 @@ struct DeclView: View {
                 }
             }
             .font(declFont)
-            .foregroundStyle(.green)
+            .foregroundStyle(declColor)
             .widgetURL(declWidgetURL)
         } else {
             Text("–")
                 .font(declFont)
-                .foregroundStyle(.green)
+                .foregroundStyle(declColor)
                 .widgetURL(declWidgetURL)
         }
     }
