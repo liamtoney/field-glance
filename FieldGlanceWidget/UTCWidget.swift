@@ -42,7 +42,7 @@ struct UTCView: View {
                 Text(shortTimeFormatter.string(from: entry.date))
                     .lineLimit(1)
                 Text("UTC")
-                    .secondaryText(watchSubFont, opacity: 0.7)
+                    .secondaryText(watchSubFont)
             }
         }
         .font(watchClockFont)

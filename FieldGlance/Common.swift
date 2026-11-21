@@ -24,8 +24,8 @@ let watchSubFont = Font.system(size: 13)
 
 extension View {
     /// Small, dimmed, single-line text used for labels under the big values.
-    func secondaryText(_ font: Font, opacity: Double) -> some View {
-        self.font(font).opacity(opacity).lineLimit(1)
+    func secondaryText(_ font: Font) -> some View {
+        self.font(font).opacity(0.6).lineLimit(1)
     }
 }
 
@@ -40,10 +40,6 @@ struct PanelStyle {
     let panelSpacing: CGFloat
     /// Pulls the time up closer to the date
     let dateBottomPadding: CGFloat
-    /// Opacity for the local zone label
-    let localOpacity: Double
-    /// Opacity for all other secondary text
-    let secondaryOpacity: Double
 }
 
 // MARK: - Clock formatting
@@ -119,7 +115,6 @@ private struct ClockPanel: View {
     let zone: Zone
     let label: String
     let color: Color
-    let labelOpacity: Double
     let style: PanelStyle
 
     var body: some View {
@@ -130,7 +125,7 @@ private struct ClockPanel: View {
             Text(zone.timeFormatter.string(from: date))
                 .lineLimit(1)
             Text(label)
-                .secondaryText(style.subFont, opacity: labelOpacity)
+                .secondaryText(style.subFont)
         }
         .font(style.clockFont)
         .foregroundStyle(color)
@@ -150,7 +145,6 @@ struct ClocksView: View {
                     zone: localZone,
                     label: localLabel(for: localZone.timeZone, at: context.date),
                     color: .blue,
-                    labelOpacity: style.localOpacity,
                     style: style
                 )
                 ClockPanel(
@@ -158,7 +152,6 @@ struct ClocksView: View {
                     zone: utcZone,
                     label: "UTC",
                     color: .orange,
-                    labelOpacity: style.secondaryOpacity,
                     style: style
                 )
             }

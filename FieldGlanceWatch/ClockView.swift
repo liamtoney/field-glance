@@ -12,9 +12,7 @@ extension PanelStyle {
         subFont: watchSubFont,
         lineSpacing: nil,
         panelSpacing: 12,
-        dateBottomPadding: -8,
-        localOpacity: 0.7,
-        secondaryOpacity: 0.7
+        dateBottomPadding: -8
     )
 }
 

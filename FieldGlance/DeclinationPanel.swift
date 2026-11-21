@@ -27,10 +27,10 @@ struct DeclinationPanel: View {
                     .minimumScaleFactor(0.5)
             }
             Text(WMM.statusLabel(on: Date()))
-                .secondaryText(style.subFont, opacity: style.secondaryOpacity)
+                .secondaryText(style.subFont)
             if let loc = model.location {
                 Text(coordinateString(lat: loc.latitude, lon: loc.longitude))
-                    .secondaryText(style.subFont, opacity: style.secondaryOpacity)
+                    .secondaryText(style.subFont)
             }
         }
         .font(style.declinationFont)

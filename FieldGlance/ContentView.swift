@@ -10,8 +10,6 @@ import SwiftUI
 //   50    spacing between panels
 //   36    horizontal padding
 //   48    vertical padding
-//    0.6  opacity for secondary text
-//    0.7  opacity for the local zone label (slightly stronger for blue)
 
 // Clock date/time and declination value font size
 private let bigFontSize: CGFloat = 48
@@ -23,9 +21,7 @@ extension PanelStyle {
         subFont: .system(size: 18),
         lineSpacing: 4,
         panelSpacing: 50,
-        dateBottomPadding: -10,
-        localOpacity: 0.7,
-        secondaryOpacity: 0.6
+        dateBottomPadding: -10
     )
 }
 
