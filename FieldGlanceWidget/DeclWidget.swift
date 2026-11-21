@@ -41,6 +41,7 @@ struct DeclProvider: TimelineProvider {
 
 // MARK: - Views
 
+// This size carefully chosen so that wide text still fits in circular widget
 private let declFont = Font.system(size: 15, weight: .semibold)
 
 struct DeclView: View {

@@ -22,7 +22,8 @@ let localColor = Color.blue
 let utcColor = Color.orange
 let declColor = Color.green
 
-// Watch app and complication fonts
+// Watch app and complication fonts. These live here (unlike the iPhone fonts, which are
+// inline in PanelStyle.phone) because the widget extension can't see PanelStyle.watch.
 let watchClockFont = Font.system(size: 24, weight: .semibold, design: .monospaced)
 let watchSubFont = Font.system(size: 13)
 
