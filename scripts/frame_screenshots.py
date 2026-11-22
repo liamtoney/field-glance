@@ -18,7 +18,7 @@ on high-resolution screens.
 
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'screenshots'
@@ -40,6 +40,21 @@ JOBS = {
 }
 
 
+def screen_mask(bezel: Image.Image) -> Image.Image:
+    """Return a mask of the bezel's screen opening, slightly enlarged.
+
+    The opening has rounded corners but screenshots are square, and the device's outer
+    corners are rounded too, so an unmasked screenshot's corners would stick out past the
+    bezel. The mask is the fully transparent region connected to the bezel's center,
+    grown by a few pixels to cover the opening's anti-aliased edge (the frame is much
+    thicker than that, so nothing shows outside the device).
+    """
+    transparent = bezel.getchannel('A').point(lambda a: 255 if a == 0 else 0)
+    ImageDraw.floodfill(transparent, (bezel.width // 2, bezel.height // 2), 128)
+    opening = transparent.point(lambda v: 255 if v == 128 else 0)
+    return opening.filter(ImageFilter.MaxFilter(9))
+
+
 def frame(screenshot_path: Path, bezel_path: Path, width: int) -> Image.Image:
     screenshot = Image.open(screenshot_path).convert('RGBA')
     bezel = Image.open(bezel_path).convert('RGBA')
@@ -47,7 +62,8 @@ def frame(screenshot_path: Path, bezel_path: Path, width: int) -> Image.Image:
     canvas = Image.new('RGBA', bezel.size, (0, 0, 0, 0))
     x = (bezel.width - screenshot.width) // 2
     y = (bezel.height - screenshot.height) // 2
-    canvas.paste(screenshot, (x, y))
+    mask = screen_mask(bezel).crop((x, y, x + screenshot.width, y + screenshot.height))
+    canvas.paste(screenshot, (x, y), mask)
     canvas.alpha_composite(bezel)
 
     height = round(canvas.height * width / canvas.width)
