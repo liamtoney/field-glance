@@ -63,3 +63,36 @@
   text-decoration: none;
   font-family: var(--md-code-font);
 }
+
+/* Home page screenshots: iPhone on the left, two watches stacked on the right. At these
+   widths the two watches together are about as tall as the iPhone. The columns are
+   proportional, so the group scales down on narrow screens instead of wrapping. */
+.md-typeset .screenshots {
+  display: grid;
+  grid-template-columns: 240fr 208fr;
+  align-items: center;
+  gap: 1rem;
+  max-width: calc(448px + 1rem);
+}
+.md-typeset .screenshots .watches {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.md-typeset .screenshots img {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+}
+
+/* A thin gray "frame" so the black screenshots don't float on the black page. The
+   corner radii roughly match each device's screen at the displayed sizes. */
+.md-typeset .screenshots img {
+  border: 2px solid #3a3a3c;
+}
+.md-typeset .screenshots img.iphone {
+  border-radius: 34px;
+}
+.md-typeset .screenshots img.watch {
+  border-radius: 36px;
+}

@@ -4,4 +4,45 @@ title: "Home"
 
 # Field Glance
 
-🚧 This page is under construction — thanks for your patience!
+Local time, UTC time, and magnetic declination — at a glance. For iPhone and Apple
+Watch.
+
+<div class="screenshots">
+  <img class="iphone" src="static/iphone.png" alt="Field Glance on iPhone, showing local time in MST, UTC time, and a declination of 7.9° E" width="240">
+  <div class="watches">
+    <img class="watch" src="static/watch-1.png" alt="Field Glance on Apple Watch, showing local time in MST and UTC time" width="208">
+    <img class="watch" src="static/watch-2.png" alt="Field Glance on Apple Watch, showing a declination of 7.9° E with a compass arrow" width="208">
+  </div>
+</div>
+
+## What it shows
+
+Three pieces of information on a black screen:
+
+- **Local time:** date and time in your current time zone, labeled with its abbreviation
+  and UTC offset, like `CEST (UTC+2)`
+- **UTC:** date and time in UTC
+- **Magnetic declination:** the current value at your location, with a compass arrow
+  showing which way the magnetic field points relative to true north
+
+On Apple Watch, UTC and declination are also available as complications.
+
+That's it. No accounts, no settings, no network requests.
+
+## About the declination model
+
+Declination is computed on your device with the
+[World Magnetic Model 2025](https://www.ncei.noaa.gov/products/world-magnetic-model)
+(WMM2025), which is valid through 2029. The app shows a warning when the model is out of
+date. For details on how the model was built, see the
+[WMM2025 technical report](https://doi.org/10.25923/prbc-s316).
+
+## Privacy
+
+Field Glance uses your location only to calculate declination, and your location never
+leaves your device. See the [privacy policy](privacy-policy.md) for details.
+
+## Support
+
+Questions or bug reports? Email
+<a href="mailto:liam@liam.earth" class="email">liam@liam.earth</a>.
