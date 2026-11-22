@@ -64,14 +64,65 @@ the framed images in `pages/static/screenshots/`:
 uv run scripts/frame_screenshots.py
 ```
 
+## App icon
+
+### Files
+
+- [`FieldGlance/FieldGlance.icon`](FieldGlance/FieldGlance.icon) is the Icon Composer
+  file that Xcode builds. It's a folder: `Assets/field-glance.svg` is the artwork, and
+  `icon.json` holds the composition (background fill, effects, per-platform tweaks).
+- [`pages/static/FieldGlance.png`](pages/static/FieldGlance.png) is a PNG export of the
+  icon for the website and this README. It isn't used in the app.
+
+### Artwork
+
+The SVG has a 1024 × 1024 pixel canvas (`viewBox="0 0 1024 1024"`) and three elements:
+
+| Element                        | Color     |
+| ------------------------------ | --------- |
+| the letter F                   | `#0091ff` |
+| the letter G                   | `#ff9230` |
+| arrow leaning like a backslash | `#30d158` |
+
+These match the app's `localColor`, `utcColor`, and `declColor` (the system blue,
+orange, and green in dark mode) and the `--fg-*` colors in
+[`pages/stylesheets/extra.css`](pages/stylesheets/extra.css). Keep all three in sync.
+
+Rules for the SVG:
+
+- No background, blur, shadows, or gradients. Those are applied in Icon Composer.
+- Text converted to outlines.
+
+### Updating the icon
+
+1. With Icon Composer closed, edit `FieldGlance/FieldGlance.icon/Assets/field-glance.svg`
+   in VectorCraft, Illustrator, Inkscape, or a text editor. Keep the file name, since
+   `icon.json` refers to it by name.
+2. Open `FieldGlance/FieldGlance.icon` in Icon Composer and check the previews: Default,
+   Dark, and watchOS. Watch icons are circular, so check that nothing is clipped.
+3. Export a 128 × 128 px PNG to `pages/static/FieldGlance.png`, and commit it together
+   with the `.icon`.
+
+### Xcode setup
+
+- The **App Icon** field on the General tab of both the iPhone and watch targets must
+  say `FieldGlance`, matching the file name without `.icon`.
+- The watch target needs the file too. `FieldGlance.icon` lives in the iPhone folder, so
+  give it the watch target under Target Membership.
+
+### Composition settings
+
+These live only in the `.icon` file's `icon.json`, so note them here if they change.
+
+- **Background fill:** `#000000` (use the same fill for Default and Dark)
+- **Groups:** The full SVG is imported as a single group
+- **Effects:** Disable shadow on the _group_
+
 ## Notes
 
 Declination is computed with the
 [World Magnetic Model 2025](https://www.ncei.noaa.gov/products/world-magnetic-model)
 (WMM2025), which is valid through 2029. The app shows a warning when the model is out of
 date.
-
-The app icon is built from `icon/field-glance.svg`. See
-[`icon/README.md`](icon/README.md) for how it is exported and composed.
 
 > 🤖 Built using Claude and Kiro, with a human in the loop.

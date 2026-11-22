@@ -18,7 +18,7 @@ let declWidgetURL = URL(string: "fieldglancewatch://page/decl")!
 
 // MARK: - Colors, fonts, and styling
 
-// Also used in the app icon and website (see icon/README.md)
+// Also used in the app icon and website (see "App icon" in README.md)
 let localColor = Color.blue
 let utcColor = Color.orange
 let declColor = Color.green
