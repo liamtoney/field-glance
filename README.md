@@ -42,8 +42,8 @@ Three pieces of information on a black screen...
 
 ## Website
 
-The website at [field-glance.liam.earth](https://field-glance.liam.earth) serves as the
-App Store support page and hosts the privacy policy. It's built with
+The website at [**field-glance.liam.earth**](https://field-glance.liam.earth) serves as
+the App Store support page and hosts the privacy policy. It's built with
 [Zensical](https://zensical.org) from the Markdown in [`pages/`](pages/), configured in
 [`zensical.toml`](zensical.toml). To preview it locally:
 ```sh
