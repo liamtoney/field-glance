@@ -11,8 +11,8 @@
 
 <p align="center">
   <b>
-    <a href="https://field-glance.liam.earth">Website</a>
-    <!-- TODO: Add once approved: · <a href="https://apps.apple.com/app/idXXXXXXXXXX">App Store</a> -->
+    <a href="https://field-glance.liam.earth">Website</a> ·
+    <a href="https://apps.apple.com/app/field-glance/id6835746100">App Store</a>
   </b>
 </p>
 

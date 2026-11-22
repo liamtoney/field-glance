@@ -7,15 +7,9 @@ title: "Home"
 Local time, UTC time, and magnetic declination — at a glance. For iPhone and Apple
 Watch.
 
-<!--
-TODO: Uncomment once the app is approved. Replace the ID with the one from the App
-Store listing URL, and add Apple's black "Download on the App Store" badge from
-https://toolbox.marketingtools.apple.com as static/app-store-badge.svg.
-
-<a href="https://apps.apple.com/app/idXXXXXXXXXX">
-  <img src="static/app-store-badge.svg" alt="Download on the App Store" height="40">
+<a href="https://apps.apple.com/app/field-glance/id6835746100">
+  <img src="static/app-store-black.svg" alt="Download on the App Store" height="40">
 </a>
--->
 
 <div class="screenshots">
   <img src="static/screenshots/iphone-16.png" alt="Field Glance on iPhone, showing local time in MST, UTC time, and a declination of 7.9° E" width="280">
