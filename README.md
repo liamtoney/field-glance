@@ -9,6 +9,13 @@
   For iPhone and Apple Watch.
 </p>
 
+<p align="center">
+  <b>
+    <a href="https://field-glance.liam.earth">Website</a>
+    <!-- TODO: Add once approved: · <a href="https://apps.apple.com/app/idXXXXXXXXXX">App Store</a> -->
+  </b>
+</p>
+
 ---
 
 Three pieces of information on a black screen...
@@ -32,6 +39,18 @@ Three pieces of information on a black screen...
 
 - Xcode 27 or later
 - iOS and watchOS versions: see **Minimum Deployments** in each target's General tab
+
+## Website
+
+The website at [field-glance.liam.earth](https://field-glance.liam.earth) serves as the
+App Store support page and hosts the privacy policy. It's built with
+[Zensical](https://zensical.org) from the Markdown in [`pages/`](pages/), configured in
+`zensical.toml`. To preview it locally:
+```sh
+uvx zensical@0.1.0 serve
+```
+
+Pushing changes under `pages/` to `main` deploys the site to GitHub Pages.
 
 ## Notes
 
