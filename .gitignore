@@ -17,3 +17,7 @@ DerivedData/
 
 # Built Zensical site
 /site/
+
+# Apple product bezels (download from
+# https://developer.apple.com/design/resources/#product-bezels)
+/screenshots/apple-product-bezels/

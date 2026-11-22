@@ -18,10 +18,10 @@ https://toolbox.marketingtools.apple.com as static/app-store-badge.svg.
 -->
 
 <div class="screenshots">
-  <img class="iphone" src="static/iphone.png" alt="Field Glance on iPhone, showing local time in MST, UTC time, and a declination of 7.9° E" width="240">
+  <img src="static/screenshots/iphone-16.png" alt="Field Glance on iPhone, showing local time in MST, UTC time, and a declination of 7.9° E" width="280">
   <div class="watches">
-    <img class="watch" src="static/watch-1.png" alt="Field Glance on Apple Watch, showing local time in MST and UTC time" width="208">
-    <img class="watch" src="static/watch-2.png" alt="Field Glance on Apple Watch, showing a declination of 7.9° E with a compass arrow" width="208">
+    <img src="static/screenshots/watch-11-46mm-1.png" alt="Field Glance on Apple Watch, showing local time in MST and UTC time" width="175">
+    <img src="static/screenshots/watch-11-46mm-2.png" alt="Field Glance on Apple Watch, showing a declination of 7.9° E with a compass arrow" width="175">
   </div>
 </div>
 

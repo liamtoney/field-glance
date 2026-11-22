@@ -52,6 +52,18 @@ uvx zensical@0.1.0 serve
 
 Pushing changes under `pages/` to `main` deploys the site to GitHub Pages.
 
+The home page screenshots are shown inside Apple's
+[product bezels](https://developer.apple.com/design/resources/#product-bezels). The raw
+screenshots live in [`screenshots/`](screenshots/), named for the device they match (a
+screenshot must be the same size as its bezel's screen opening). The bezels aren't
+checked in, so download them from Apple and place them in
+`screenshots/apple-product-bezels/` under the file names that
+[`scripts/frame_screenshots.py`](scripts/frame_screenshots.py) expects. Then regenerate
+the framed images in `pages/static/screenshots/`:
+```sh
+uv run scripts/frame_screenshots.py
+```
+
 ## Notes
 
 Declination is computed with the
