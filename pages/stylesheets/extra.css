@@ -1,4 +1,5 @@
 :root {
+  /* Same colors as the app and icon (see icon/README.md) */
   --fg-blue:   #0091ff;
   --fg-orange: #ff9230;
   --fg-green:  #30d158;
@@ -25,13 +26,13 @@
 
 /* Header tweaks */
 .md-header {
-    /* Three-color gradient */
-    background: linear-gradient(to right, var(--fg-blue), var(--fg-orange), var(--fg-green));
-    /* Search bar tweaks */
-    --md-default-fg-color:             var(--black);
-    --md-default-bg-color--light:    hsla(0, 0%, 100%, 0.7);
-    --md-default-fg-color--lighter:  hsla(0, 0%, 100%, 0.6);
-    --md-default-fg-color--lightest: hsla(0, 0%, 100%, 0.4);
+  /* Three-color gradient */
+  background: linear-gradient(to right, var(--fg-blue), var(--fg-orange), var(--fg-green));
+  /* Search bar tweaks */
+  --md-default-fg-color:           var(--black);
+  --md-default-bg-color--light:    hsla(0, 0%, 100%, 0.7);
+  --md-default-fg-color--lighter:  hsla(0, 0%, 100%, 0.6);
+  --md-default-fg-color--lightest: hsla(0, 0%, 100%, 0.4);
 }
 
 /* This overrides only the header title and leaves the headings alone. */
@@ -50,7 +51,7 @@
   line-height: 1.6;
 }
 
-/* Admonition tweaks: orange text on a tinted orange box */
+/* Admonition tweaks (colors are set in the slate scheme above) */
 .md-typeset .admonition {
   font-size: 0.7rem;
   background-color: var(--md-admonition-bg-color) !important;

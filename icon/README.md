@@ -20,6 +20,10 @@ The SVG has a 1024 × 1024 pixel canvas (`viewBox="0 0 1024 1024"`), three eleme
 | the letter G                   | `#ff9230` |
 | arrow leaning like a backslash | `#30d158` |
 
+These match the app's `localColor`, `utcColor`, and `declColor` (the system blue,
+orange, and green in dark mode) and the `--fg-*` colors in
+`pages/stylesheets/extra.css`. Keep all three in sync.
+
 Rules for the SVG:
 
 - No background, blur, shadows, or gradients. Those are applied in Icon Composer.
@@ -32,7 +36,8 @@ Rules for the SVG:
    with the updated file.
 3. Check the previews: Default, Dark, and watchOS. Watch icons are circular, so check
    that nothing is clipped.
-4. Save, export a PNG @ 128pt, and commit the SVG, the PNG, and the `.icon` together.
+4. Save, export a 128 × 128 px PNG, and commit the SVG, the PNG, and the `.icon`
+   together.
 
 ## Xcode setup
 
@@ -40,7 +45,6 @@ Rules for the SVG:
   say `FieldGlance`, matching the file name without `.icon`.
 - The watch target needs the file too. `FieldGlance.icon` lives in the iPhone folder, so
   give it the watch target under Target Membership.
-- The old `AppIcon` asset-catalog entry is not used while a `.icon` file is present.
 
 ## Composition settings
 
