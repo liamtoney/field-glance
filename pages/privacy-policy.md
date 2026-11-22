@@ -2,22 +2,21 @@
 
 !!! warning ""
 
-    Effective 2026-11-17
+    Effective 2026-11-21
 
 This privacy policy applies to the **Field Glance** app for mobile devices (the
 "Application"), operated by Liam Toney (the "Service Provider").
 
 ## Information Collection and Use
 
-The Application collects information when you download and use it. This information is
-limited to the location of your device, which is used for calculating the local magnetic
-declination at your location. **This information never leaves your device and therefore
-cannot be shared with any third parties.**
+The Application uses the location of your device to calculate the local magnetic
+declination at your location. It does not use any other information. **This information
+never leaves your device and therefore cannot be shared with any third parties.**
 
 ## Opt-Out Rights
 
-You can stop further collection of information from your mobile device by uninstalling
-the Application.
+You can stop the Application from using your location at any time by turning off
+Location Services for it in Settings, or by uninstalling the Application.
 
 ## Changes
 
