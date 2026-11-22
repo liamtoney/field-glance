@@ -5,12 +5,6 @@
 
 import SwiftUI
 
-// Layout tuning:
-//    4    spacing between lines within a panel
-//   50    spacing between panels
-//   36    horizontal padding
-//   48    vertical padding
-
 // Clock date/time and declination value font size
 private let bigFontSize: CGFloat = 48
 
