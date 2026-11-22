@@ -16,24 +16,12 @@ jobs:
       - uses: actions/checkout@v7
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode.app
-      - name: Build iPhone app
+      # The iPhone app depends on the Watch app, which depends on the widget, so this
+      # one build compiles all three targets
+      - name: Build apps and widget
         run: |
           xcodebuild build \
             -project FieldGlance.xcodeproj \
             -scheme FieldGlance \
             -destination 'generic/platform=iOS Simulator' \
-            CODE_SIGNING_ALLOWED=NO
-      - name: Build Watch app
-        run: |
-          xcodebuild build \
-            -project FieldGlance.xcodeproj \
-            -scheme FieldGlanceWatch \
-            -destination 'generic/platform=watchOS Simulator' \
-            CODE_SIGNING_ALLOWED=NO
-      - name: Build Widget
-        run: |
-          xcodebuild build \
-            -project FieldGlance.xcodeproj \
-            -scheme FieldGlanceWidget \
-            -destination 'generic/platform=watchOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
