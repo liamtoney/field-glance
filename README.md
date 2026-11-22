@@ -95,9 +95,10 @@ Rules for the SVG:
 
 ### Updating the icon
 
-1. With Icon Composer closed, edit `FieldGlance/FieldGlance.icon/Assets/field-glance.svg`
-   in VectorCraft, Illustrator, Inkscape, or a text editor. Keep the file name, since
-   `icon.json` refers to it by name.
+1. With Icon Composer closed, edit
+   `FieldGlance/FieldGlance.icon/Assets/field-glance.svg` in VectorCraft, Illustrator,
+   Inkscape, or a text editor. Keep the file name, since `icon.json` refers to it by
+   name.
 2. Open `FieldGlance/FieldGlance.icon` in Icon Composer and check the previews: Default,
    Dark, and watchOS. Watch icons are circular, so check that nothing is clipped.
 3. Export a 128 × 128 px PNG to `pages/static/FieldGlance.png`, and commit it together
@@ -117,6 +118,46 @@ These live only in the `.icon` file's `icon.json`, so note them here if they cha
 - **Background fill:** `#000000` (use the same fill for Default and Dark)
 - **Groups:** The full SVG is imported as a single group
 - **Effects:** Disable shadow on the _group_
+
+## Versioning and releases
+
+Field Glance uses the [CalVer scheme](https://calver.org/) with the format
+`YYYY.M[.MICRO]`, where `YYYY` is the full year, `M` is the short month (1, 2, ..., 11,
+12), and `MICRO` is an optional third number covering multiple releases within a single
+month. The year and month are determined from the current UTC date of the build. The
+first release of a month has no `MICRO` component; later ones add `.1`, `.2`, etc. In
+addition, each archive created in Xcode gets a build number. The build number starts at
+1 and increases sequentially with each archive, independent of the version number. Git
+**tags** are created for each archive, in the format `vYYYY.M[.MICRO]+n`, where `n` is
+the build number. GitHub **releases** are created for the subset of tags which are
+published on the App Store.
+
+### Release checklist
+
+1. **Set the version and build number.** In the project's Build Settings (shared by all
+   three targets), set `MARKETING_VERSION` (the CalVer version string) from today's UTC
+   date, adding or incrementing `MICRO` if this month already has a release. Increment
+   `CURRENT_PROJECT_VERSION` (the build number).
+2. **Retake the screenshots.** In Device Hub, run the app on an iPhone 16 and an Apple
+   Watch Series 11 (46mm), and take screenshots of the iPhone screen and both watch
+   pages. Save them over the files in [`screenshots/`](screenshots/), keeping the same
+   names.
+3. **Update the website screenshots.** Regenerate the framed images, then preview the
+   site to check them (see the [**Website**](#website) section).
+4. **Commit and push** the version change and screenshots to `main`. This also deploys
+   the updated website.
+5. **Archive and upload.** In Xcode, choose **Product > Archive**, then upload the
+   archive to App Store Connect from the Organizer.
+6. **Tag the archived commit** with a short annotation, and push the tag:
+   ```sh
+   git tag -a vYYYY.M[.MICRO]+n -m 'YYYY.M[.MICRO] (n) — <short message here>'
+   git push --tags
+   ```
+7. **Prepare the version in App Store Connect.** Create the new version, replace the
+   iPhone and Apple Watch screenshots with the raw (unframed) files from `screenshots/`,
+   write the "What's New" text, select the uploaded build, and submit it for review.
+8. **Create a GitHub release** from the tag once the version is live on the App Store,
+   following the formatting of previous releases.
 
 ## Notes
 
