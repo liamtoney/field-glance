@@ -118,7 +118,7 @@
         "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
         "INFOPLIST_KEY_UISupportedInterfaceOrientations": "UIInterfaceOrientationPortrait",
         "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad": "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown",
-        "IPHONEOS_DEPLOYMENT_TARGET": "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)",
+        "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
         "LD_RUNPATH_SEARCH_PATHS": [
           "$(inherited)",
           "@executable_path/Frameworks",
@@ -183,7 +183,7 @@
         "SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY": "YES",
         "TARGETED_DEVICE_FAMILY": "4",
         "VALIDATE_PRODUCT[config=Release]": "YES",
-        "WATCHOS_DEPLOYMENT_TARGET": "$(RECOMMENDED_WATCHOS_DEPLOYMENT_TARGET)",
+        "WATCHOS_DEPLOYMENT_TARGET": "10.0",
       },
     }, {
       "name": "FieldGlanceWidget",
@@ -216,7 +216,7 @@
         "SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY": "YES",
         "TARGETED_DEVICE_FAMILY": "4",
         "VALIDATE_PRODUCT[config=Release]": "YES",
-        "WATCHOS_DEPLOYMENT_TARGET": "$(RECOMMENDED_WATCHOS_DEPLOYMENT_TARGET)",
+        "WATCHOS_DEPLOYMENT_TARGET": "10.0",
       },
     },
   ],
