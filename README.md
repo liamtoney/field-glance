@@ -131,7 +131,8 @@ published on the App Store.
    ```
 7. **Prepare the version in App Store Connect.** Create the new version, replace the
    iPhone and Apple Watch screenshots with the raw (unframed) files from `screenshots/`,
-   write the "What's New" text, select the uploaded build, and submit it for review.
+   write the "What's New" text, and update any other fields (such as the description or
+   keywords) as needed. Then select the uploaded build and submit it for review.
 8. **Create a GitHub release** from the tag once the version is live on the App Store,
    following the formatting of previous releases.
 
