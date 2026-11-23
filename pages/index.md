@@ -23,15 +23,14 @@ Watch.
 
 Three pieces of information on a black screen:
 
-- **Local time:** date and time in your current time zone, labeled with its abbreviation
-  and UTC offset, like `CEST (UTC+2)`
-- **UTC:** date and time in UTC
-- **Magnetic declination:** the current value at your location, with a compass arrow
+- **Local time** — date and time in your current time zone
+- **UTC** — date and time in UTC
+- **Magnetic declination** — the current value at your location, with a compass arrow
   showing which way the magnetic field points relative to true north
 
-On Apple Watch, UTC and declination are also available as complications.
+...and nothing else. No accounts, no settings, no network requests.
 
-That's it. No accounts, no settings, no network requests.
+> On Apple Watch, UTC time and declination are also available as complications.
 
 ## About the declination model
 

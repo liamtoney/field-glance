@@ -18,14 +18,16 @@
 
 ---
 
-Three pieces of information on a black screen...
+Three pieces of information on a black screen:
 
 - **Local time** — date and time in your current time zone
 - **UTC** — date and time in UTC
-- **Magnetic declination** — the current value at your location indicated with a compass
-  arrow
+- **Magnetic declination** — the current value at your location, with a compass arrow
+  showing which way the magnetic field points relative to true north
 
 ...and nothing else. No accounts, no settings, no network requests.
+
+> On Apple Watch, UTC time and declination are also available as complications.
 
 ## Targets
 
