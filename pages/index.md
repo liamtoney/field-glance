@@ -45,6 +45,11 @@ date. For details on how the model was built, see the
 Field Glance uses your location only to calculate declination, and your location never
 leaves your device. See the [privacy policy](privacy-policy.md) for details.
 
+## Source code
+
+Field Glance is open source under the MIT License. The code is on GitHub at
+[**liamtoney/field-glance**](https://github.com/liamtoney/field-glance).
+
 ## Support
 
 Questions or bug reports? Email
