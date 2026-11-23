@@ -59,8 +59,6 @@
 
 /* Email link formatting */
 .md-typeset a.email {
-  font-weight: 500;
-  text-decoration: none;
   font-family: var(--md-code-font);
 }
 
